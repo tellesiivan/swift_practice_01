@@ -16,7 +16,8 @@ class ViewController: UIViewController {
     
 //    declare initial countries (var --> will be modified)
     var countries: Array<String> = ["USA", "BRASIL", "MEXICO", "AFRICA", "England", "China", "Korea", "Japan"]
-
+// declare a dictionary, where the key and value are string
+    var countryPopularCity: [String: String] = ["USA": "Long Beach", "BRASIL" : "Rio De Jeneiro", "MEXICO": "Michoachan", "AFRICA" : "Cape Town", "England" :"New Castle", "China": "idk city", "Korea" :"Kia City", "Japan" :"Tokyo"]
     
 //     struct, another way of declaring data
     struct Constants {
@@ -51,12 +52,21 @@ extension ViewController: UITableViewDataSource {
         
         var tableViewCellContentConfig = tableViewCell.defaultContentConfiguration()
         tableViewCellContentConfig.text = countries[indexPath.row]
-        
+        tableViewCellContentConfig.secondaryText = countryPopularCity[countries[indexPath.row]]
+
         tableViewCell.contentConfiguration = tableViewCellContentConfig
         
         
         return tableViewCell
     }
     
+}
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("This row was selected \(countries[indexPath.row]), popular city --> \(countryPopularCity[countries[indexPath.row]] ?? "n/a")")
+//        deselect row (tableView.deselectRow(at: indexPath, animated: true))
+        
+        
+    }
     
 }
