@@ -66,6 +66,16 @@ extension ViewController: UITableViewDelegate {
         print("This row was selected \(countries[indexPath.row]), popular city --> \(countryPopularCity[countries[indexPath.row]] ?? "n/a")")
 //        deselect row (tableView.deselectRow(at: indexPath, animated: true))
         
+        let detailViewController = UIViewController()
+        detailViewController.view.backgroundColor = .systemBlue
+//        detailViewController.modalPresentationStyle = .popover
+//        present(detailViewController, animated: true)
+
+//        navigationController?.pushViewController(detailViewController, animated: true)
+        
+        performSegue(withIdentifier: "ShowCountryDetails", sender: self)
+        
+
         
     }
     
